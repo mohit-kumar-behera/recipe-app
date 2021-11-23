@@ -63,6 +63,7 @@ button:focus {
 
 .navlink {
   border: 1px solid #fff;
+  border-radius: 3px;
   color: #fff;
   background-color: transparent;
   padding: 0.5em 0.2em;

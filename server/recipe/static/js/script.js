@@ -1,6 +1,5 @@
 const openModalBtns = document.querySelectorAll('.modal-opener');
 const closeModalBtns = document.querySelectorAll('.modal-closer');
-console.log(closeModalBtns);
 
 const openModal = elem => {
   document.querySelector(`.${elem}`).style.display = 'flex';

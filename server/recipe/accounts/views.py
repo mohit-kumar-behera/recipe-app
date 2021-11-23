@@ -1,7 +1,5 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse
+from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model
-from django.contrib.auth.hashers import make_password, check_password
 from django.contrib.auth import authenticate, login, logout
 User = get_user_model()
 
@@ -48,7 +46,3 @@ def signup_handler(request):
 def signout_handler(request):
   logout(request)
   return redirect('accounts:home')
-
-def test_home(request):
-  user = request.user
-  return HttpResponse(f"Home page {user}")

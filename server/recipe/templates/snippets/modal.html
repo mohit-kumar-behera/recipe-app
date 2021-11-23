@@ -6,7 +6,8 @@
       <h3>LOGIN</h3>
     </div>
     <div class="modal-content">
-      <form>
+      <form method="post" action="">
+        {% csrf_token %}
         <input class="login user-input" type="email" placeholder="Email" />
         <input class="login user-input" type="password" placeholder="Password" />
         <button class="button-submit">Login</button>
@@ -23,7 +24,8 @@
     </div>
 
     <div class="modal-content">
-      <form>
+      <form method="post" action="">
+        {% csrf_token %}
         <input class="signup user-input" type="email" placeholder="Email" />
         <input class="signup user-input" type="password" placeholder="Password" />
         <input class="signup user-input" type="text" placeholder="First Name" />
