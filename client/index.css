@@ -1,0 +1,107 @@
+.login-button {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  background: rgb(255, 151, 15);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  height: 2rem;
+  width: 5rem;
+}
+
+a {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-modal {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-modal-content {
+  width: 350px;
+  height: 200px;
+  background-color: white;
+  border-radius: 5px;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+}
+
+input.login {
+  width: 75%;
+  display: block;
+  margin: 20 auto;
+}
+
+.button-submit {
+  margin: 0 auto;
+  background: white;
+  color: rgb(255, 151, 15);
+  border: 3px solid rgb(255, 151, 15);
+  border-radius: 30px;
+  height: 2rem;
+  width: 5rem;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 30px;
+  transform: rotate(45deg);
+  cursor: pointer;
+}
+
+.signup-button {
+  display: flex;
+  justify-content: center;
+}
+
+.signup-modal {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-modal-content {
+  width: 350px;
+  height: 250px;
+  background-color: white;
+  border-radius: 5px;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+}
+
+input.signup {
+  width: 75%;
+  display: block;
+  margin: 20 auto;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 30px;
+  transform: rotate(45deg);
+  cursor: pointer;
+}
