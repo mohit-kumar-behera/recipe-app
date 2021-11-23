@@ -1,0 +1,155 @@
+/* GENERAL CSS */
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+* {
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+a {
+  display: flex;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  padding: 0.55em 1.3em;
+}
+button:focus {
+  outline: none;
+}
+
+/* NAVBAR */
+.navbar,
+.navbar > div {
+  display: grid;
+  grid-column-gap: 1em;
+}
+
+.navbar {
+  width: 100%;
+  padding: 0.3em 0.7em;
+  background: rebeccapurple;
+  color: white;
+  grid-template-columns: 2fr 1fr;
+  font-size: 1.25em;
+}
+
+.navbar > div {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.navtext {
+  justify-self: start;
+  color: #fff;
+  font-size: 1.15em;
+}
+
+.navlink {
+  border: 1px solid #fff;
+  color: #fff;
+  background-color: transparent;
+  padding: 0.5em 0.2em;
+}
+.navlink:hover {
+  background-color: #fff;
+  color: rebeccapurple;
+}
+
+/* FOOTER */
+.footer {
+  width: 100%;
+  padding: 1rem;
+  background: rebeccapurple;
+  color: #fff;
+  text-align: center;
+}
+
+/* MODAL */
+.modal {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-body {
+  position: relative;
+  width: 450px;
+  height: auto;
+  background-color: white;
+  border-radius: 5px;
+  text-align: center;
+  padding: 0.5em;
+}
+
+.modal-body > .close {
+  position: absolute;
+  top: 2px;
+  right: 10px;
+  font-size: 25px;
+  font-weight: bold;
+  padding: 0.05em 0.2em;
+  border-radius: inherit;
+  cursor: pointer;
+}
+.modal-body > .close:hover {
+  background-color: antiquewhite;
+}
+
+.modal-header {
+  width: 100%;
+  padding: 0.4em 0.1em;
+  border-bottom: 0.3px solid #aaa;
+  margin-bottom: 1.5em;
+  font-size: 1.27em;
+}
+
+label {
+  background-color: red;
+}
+.user-input {
+  width: 100%;
+  padding: 0.8em 0.55em;
+  font-size: 0.98em;
+  border: 2px solid #aaa;
+  border-radius: 5px;
+  margin-bottom: 1.05em;
+}
+.user-input::placeholder {
+  color: #aaa;
+}
+.user-input:focus {
+  outline: none;
+  border-color: rebeccapurple;
+}
+
+.button-submit {
+  font-size: 1.05em;
+  background-color: rebeccapurple;
+  color: #fff;
+  border-radius: 5px;
+}
+.button-submit:hover {
+  background-color: rgb(159, 90, 228);
+}

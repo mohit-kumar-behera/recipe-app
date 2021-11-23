@@ -1,1 +1,16 @@
-<h2>NAVBAR</h2>
+{% load static %}
+<nav class="navbar">
+  <div class="navleft">
+    <a href="#" class="navtext">Hello, {user}</a>
+  </div>
+  <div class="navright">
+    <!-- <a href="#" class="navlink">Profile</a> -->
+    <!-- <a href="#" class="navlink">Logout</a> -->
+
+    <a href="javascript:void(0)" class="navlink modal-opener" data-open="login-modal">Login</a>
+    <a href="javascript:void(0)" class="navlink modal-opener" data-open="signup-modal">Sign Up</a>
+  </div>
+</nav>
+
+<!-- if user is authenticated, include modal.html -->
+{% include 'snippets/modal.html' %}

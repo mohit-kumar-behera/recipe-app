@@ -7,57 +7,14 @@
     {% block title %} {% endblock title %}
     {% block stylesheet %} {% endblock stylesheet %}
     {% block scriptfile %} {% endblock scriptfile %}
-
-    <title>Recipe</title>
-    <link rel="stylesheet" href="index.css" />
-    
-    <script defer src="script.js"></script>
+  
   </head>
   <body>
-
     {% include 'snippets/navbar.html' %}
 
     {% block content %}
     {% endblock content %}
 
     {% include 'snippets/footer.html' %}
-
-
-    <!---login section--->
-    <div class="login-button">
-      <a href="#" id="login-btn" class="button">Login</a>
-    </div>
-
-    <div class="login-modal">
-      <div class="login-modal-content">
-        <div class="close">+</div>
-        <h3>LOGIN</h3>
-
-        <form>
-          <input class="login" type="email" placeholder="Email" />
-          <input class="login" type="password" placeholder="Password" />
-          <a href="login.html" class="button-submit">Submit</a>
-        </form>
-      </div>
-    </div>
-
-    <!---Signup section--->
-    <div class="signup-button">
-      <a href="#" id="signup-btn" class="button">Sign up</a>
-    </div>
-
-    <div class="signup-modal">
-      <div class="signup-modal-content">
-        <div class="close-btn">+</div>
-        <h3>SIGN UP</h3>
-
-        <form>
-          <input class="signup" type="name" placeholder="Name" />
-          <input class="signup" type="email" placeholder="Email" />
-          <input class="signup" type="password" placeholder="Password" />
-          <a href="index.html" class="button-submit">Submit</a>
-        </form>
-      </div>
-    </div>
   </body>
 </html>
