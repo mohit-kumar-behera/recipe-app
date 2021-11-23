@@ -1,7 +1,6 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse
+from django.shortcuts import redirect
+from django.contrib import messages
 from django.contrib.auth import get_user_model
-from django.contrib.auth.hashers import make_password, check_password
 from django.contrib.auth import authenticate, login, logout
 User = get_user_model()
 
@@ -13,12 +12,13 @@ def signin_handler(request):
     authenticated_user = authenticate(request, email=email, password=password)
     if authenticated_user is None:
       print("incorrect credential")
-      return redirect('accounts:signin')
+      messages.error(request, 'Either email or password is incorrect')
+      return redirect('home:home')
     
-    print("allow login")
+    print("allow access")
     login(request, authenticated_user)
-    return redirect('accounts:home')
-  return render(request, 'accounts/login.html')
+    return redirect('home:home')
+
 
 def signup_handler(request):
   if request.POST:
@@ -31,24 +31,22 @@ def signup_handler(request):
       try:
         user = User.objects.create_user(email=email, password=password)
       except:
-        print("something is wrong 1")
-        return redirect('accounts:signup')
+        print("something is wrong")
+        messages.error(request, 'Account with this email already exists')
+        return redirect('home:home')
       else:
         print("All went good 2")
         user.first_name = first_name
         user.last_name = last_name
         user.save()
-        return redirect('accounts:signin')
+        messages.success(request, 'Account creation was successful. Please login to continue')
+        return redirect('home:home')
     else:
-      print("something is wrong 3")
-      return redirect('accounts:signup')
-  return render(request, 'accounts/signup.html')
+      print("something is wrong")
+      messages.error(request, 'Some fields might be empty')
+      return redirect('home:home')
 
 
 def signout_handler(request):
   logout(request)
-  return redirect('accounts:home')
-
-def test_home(request):
-  user = request.user
-  return HttpResponse(f"Home page {user}")
+  return redirect('home:home')

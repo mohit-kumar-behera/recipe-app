@@ -1,1 +1,18 @@
-<h2>NAVBAR</h2>
+{% load static %}
+<nav class="navbar">
+  <div class="navleft">
+    <a href="" class="navtext">Hello, {% if request.user.is_authenticated %}{{request.user.first_name}}{% else %}User{% endif %}</a>
+  </div>
+  <div class="navright">
+    {% if request.user.is_authenticated %}
+    <a href="#" class="navlink">Profile</a>
+    <a href="{% url 'accounts:signout' %}" class="navlink">Logout</a>
+    {% else %}
+    <a href="javascript:void(0)" class="navlink modal-opener" data-open="login-modal">Login</a>
+    <a href="javascript:void(0)" class="navlink modal-opener" data-open="signup-modal">Sign Up</a>
+    {% endif %}
+  </div>
+</nav>
+
+<!-- if user is authenticated, include modal.html -->
+{% include 'snippets/modal.html' %}
