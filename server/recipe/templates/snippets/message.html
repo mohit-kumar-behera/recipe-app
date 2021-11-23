@@ -1,0 +1,10 @@
+{% if messages %}
+<ul class="messages {% if messages %}show{% endif %}">
+  {% for message in messages %}
+    <li class="message {{ message.tags }}">
+      <span>{{ message }}</span>
+      <span class="close" onclick=this.parentElement.remove()>&times;</span>
+    </li>
+  {% endfor %}
+</ul>
+{% endif %}

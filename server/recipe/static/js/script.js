@@ -1,12 +1,16 @@
 const openModalBtns = document.querySelectorAll('.modal-opener');
 const closeModalBtns = document.querySelectorAll('.modal-closer');
 
+const setElemDisplay = (elem, displayState) => {
+  document.querySelector(`.${elem}`).style.display = displayState;
+};
+
 const openModal = elem => {
-  document.querySelector(`.${elem}`).style.display = 'flex';
+  setElemDisplay(elem, 'flex');
 };
 
 const closeModal = elem => {
-  document.querySelector(`.${elem}`).style.display = 'none';
+  setElemDisplay(elem, 'none');
 };
 
 openModalBtns.forEach(btn => {

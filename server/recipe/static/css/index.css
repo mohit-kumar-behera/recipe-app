@@ -7,6 +7,10 @@ body {
 
 * {
   box-sizing: border-box;
+}
+
+a,
+button {
   transition: all 0.3s ease;
 }
 
@@ -153,4 +157,52 @@ label {
 }
 .button-submit:hover {
   background-color: rgb(159, 90, 228);
+}
+
+/* MESSAGES */
+.messages {
+  position: absolute;
+  top: 4.5em;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  padding: 0;
+  display: none;
+}
+.messages.show {
+  display: block;
+}
+.messages .message {
+  margin-left: 0;
+  list-style: none;
+  background-color: antiquewhite;
+  padding: 1em;
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: 97% 3%;
+  grid-column-gap: 0.4em;
+  color: #fff;
+  font-size: 1.2em;
+}
+.messages .message:not(:last-child) {
+  margin-bottom: 1em;
+}
+.messages .message > .close {
+  text-align: center;
+  align-self: center;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+.messages .message.warning {
+  background-color: #ffc107;
+  color: #000;
+}
+.messages .message.success {
+  background-color: #28a745;
+}
+.messages .message.error {
+  background-color: #dc3545;
+}
+.messages .message.info {
+  background-color: #17a2b8;
 }
