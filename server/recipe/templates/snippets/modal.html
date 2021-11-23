@@ -1,0 +1,37 @@
+{% load static %}
+<div class="modal login-modal">
+  <div class="modal-body">
+    <div class="close modal-closer" data-close="login-modal">&times;</div>
+    <div class="modal-header">
+      <h3>LOGIN</h3>
+    </div>
+    <div class="modal-content">
+      <form method="post" action="{% url 'accounts:signin' %}">
+        {% csrf_token %}
+        <input class="login user-input" type="email" name="email" placeholder="Email" />
+        <input class="login user-input" type="password" name="password" placeholder="Password" />
+        <button class="button-submit">Login</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal signup-modal">
+  <div class="modal-body">
+    <div class="close modal-closer" data-close="signup-modal">&times;</div>
+    <div class="modal-header">
+      <h3>SIGN UP</h3>
+    </div>
+
+    <div class="modal-content">
+      <form method="post" action="{% url 'accounts:signup' %}">
+        {% csrf_token %}
+        <input class="signup user-input" type="email" name="email" placeholder="Email" />
+        <input class="signup user-input" type="password" name="password" placeholder="Password" />
+        <input class="signup user-input" type="text" name="firstname" placeholder="First Name" />
+        <input class="signup user-input" type="text" name="lastname" placeholder="Last Name" />
+        <button class="button-submit">Sign Up</button>
+      </form>
+    </div>
+  </div>
+</div>
