@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.contrib import messages
 from django.contrib.auth import get_user_model
@@ -18,6 +19,7 @@ def signin_handler(request):
     print("allow access")
     login(request, authenticated_user)
     return redirect('home:home')
+  return HttpResponse('Your are not allowed to access this page', status=403)
 
 
 def signup_handler(request):
@@ -45,6 +47,7 @@ def signup_handler(request):
       print("something is wrong")
       messages.error(request, 'Some fields might be empty')
       return redirect('home:home')
+  return HttpResponse('Your are not allowed to access this page', status=403)
 
 
 def signout_handler(request):

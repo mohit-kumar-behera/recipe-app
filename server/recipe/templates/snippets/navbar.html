@@ -14,5 +14,6 @@
   </div>
 </nav>
 
-<!-- if user is authenticated, include modal.html -->
-{% include 'snippets/modal.html' %}
+{% if request.user.is_authenticated %}
+  {% include 'snippets/modal.html' %}
+{% endif %}
