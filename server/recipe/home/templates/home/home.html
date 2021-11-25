@@ -15,6 +15,10 @@
 
 {% block content %}
 
+  <section id="container">
+    {% include 'home/snippets/search.html' %}
+    {% include 'snippets/recipeList.html' %}
+  </section>
   {% include 'snippets/message.html' with messages=messages %}
 
 {% endblock content %}

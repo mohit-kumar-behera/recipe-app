@@ -29,7 +29,9 @@ a {
   justify-content: center;
   align-items: center;
 }
-
+p {
+  margin: 0;
+}
 button {
   border: none;
   cursor: pointer;
@@ -48,7 +50,7 @@ button:focus {
 
 .navbar {
   width: 100%;
-  padding: 0.3em 0.7em;
+  padding: 0.5em 0.7em;
   background: rebeccapurple;
   color: white;
   grid-template-columns: 2fr 1fr;
@@ -73,8 +75,7 @@ button:focus {
   padding: 0.5em 0.2em;
 }
 .navlink:hover {
-  background-color: #fff;
-  color: rebeccapurple;
+  background-color: #ffffff20;
 }
 
 /* FOOTER */
@@ -83,19 +84,23 @@ button:focus {
   padding: 1rem;
   background: rebeccapurple;
   color: #fff;
+  font-size: 1.2em;
   text-align: center;
 }
 
 /* MODAL */
 .modal {
+  position: fixed;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(6px);
   position: absolute;
   top: 0;
   display: none;
   justify-content: center;
   align-items: center;
+  z-index: 9;
 }
 
 .modal-body {
@@ -205,4 +210,169 @@ label {
 }
 .messages .message.info {
   background-color: #17a2b8;
+}
+
+/* HOME */
+#container {
+  padding: 0.5em;
+  margin: 1em;
+
+  /* border: 1px solid lightgrey; */
+}
+#container > * {
+  margin-bottom: 3em;
+}
+
+/* SEACRH FORM */
+.search-container {
+  border-radius: 4px;
+  background-color: #aaaaaa30;
+  padding: 0.7em 0.7em 0.15em 0.7em;
+}
+.search-form {
+  display: grid;
+  grid-template-columns: repeat(3, 2fr);
+  grid-column-gap: 0.5em;
+  grid-row-gap: 0.7em;
+}
+.search-form > .user-input {
+  font-size: 1.1em;
+  margin-bottom: 0;
+}
+
+/* RECIPE LIST */
+.recipe-list-container {
+  position: relative;
+}
+
+.card.skeleton {
+  width: 300px;
+  margin: auto;
+  animation: example 0.7s ease-in-out infinite alternate;
+  opacity: 0.25;
+  transform: scale(0.7);
+}
+@keyframes example {
+  to {
+    opacity: 0.8;
+    transform: scale(0.9);
+  }
+}
+
+/* CARD COMPONENT */
+.card-deck {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 1em;
+  grid-row-gap: 1.5em;
+}
+.card {
+  position: relative;
+  border: 1.1px solid #aaaaaa70;
+  height: auto;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 4px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  transition: all 0.5s linear;
+}
+.card,
+.card:hover,
+.card-content__extra {
+  transition: all 0.5s linear;
+}
+.card:hover {
+  background-color: #1f1d36;
+  color: #fff;
+  transition-delay: 0.1s;
+}
+.card-img,
+.card-content {
+  border-radius: inherit;
+}
+.card-img {
+  width: 100%;
+  height: 220px;
+  background: #aaaaaa70;
+}
+.card-img > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.card-content {
+  padding: 1.05em 0.65em;
+}
+.card-content > *:not(:last-child) {
+  margin-bottom: 0.6em;
+}
+.card-content__text {
+  font-size: 1.1em;
+}
+.card-content__extra {
+  font-style: italic;
+  position: relative;
+  color: grey;
+}
+.card:hover .card-content__extra {
+  color: lightgrey;
+}
+.card > .stretched-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+}
+.stretched-link:before {
+  content: '';
+}
+
+/* CARD SKELETON */
+.card.skeleton {
+  pointer-events: none;
+}
+.card.skeleton .card-content__text {
+  width: 100%;
+  padding: 0.6em;
+  background-color: #aaaaaa70;
+  border-radius: 4px;
+}
+
+/* RESPONSIVE */
+@media screen and (min-width: 1200px) {
+  .card-deck {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+  .card-deck {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (min-width: 576px) and (max-width: 768px) {
+  .card-deck {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .search-form {
+    grid-template-columns: repeat(1, 2fr);
+  }
+  .navbar {
+    grid-template-columns: 0.8fr 1fr;
+  }
+}
+@media screen and (max-width: 576px) {
+  .card-deck {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .search-form {
+    grid-template-columns: repeat(1, 2fr);
+  }
+  .card-img {
+    height: 280px;
+  }
+  .navbar {
+    grid-template-columns: 0.5fr 1fr;
+  }
 }
