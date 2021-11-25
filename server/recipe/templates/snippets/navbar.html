@@ -1,7 +1,7 @@
 {% load static %}
 <nav class="navbar">
   <div class="navleft">
-    <a href="" class="navtext">Hello, {% if request.user.is_authenticated %}{{request.user.first_name}}{% else %}User{% endif %}</a>
+    <a href="/" class="navtext">Hello, {% if request.user.is_authenticated %}{{request.user.first_name}}{% else %}User{% endif %}</a>
   </div>
   <div class="navright">
     {% if request.user.is_authenticated %}

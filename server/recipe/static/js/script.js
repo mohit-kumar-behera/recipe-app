@@ -6,10 +6,12 @@ const setElemDisplay = (elem, displayState) => {
 };
 
 const openModal = elem => {
+  document.body.style.overflow = 'hidden';
   setElemDisplay(elem, 'flex');
 };
 
 const closeModal = elem => {
+  document.body.style.overflow = 'auto';
   setElemDisplay(elem, 'none');
 };
 
