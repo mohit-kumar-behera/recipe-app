@@ -9,4 +9,4 @@ def home_view(request):
 
 @login_required(login_url='/')
 def profile_view(request, username):
-  return HttpResponse('hello profile {}'.format(username))
+  return render(request, 'home/profile.html')

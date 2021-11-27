@@ -1,0 +1,13 @@
+<div class="search-container">
+  <form class="search-form">
+    <input type="text" name="recipe" class="user-input" placeholder="Search Recipes" spellcheck="false"/>
+    <input type="text" name="ingredients" class="user-input" placeholder="Search Ingredients" spellcheck="false"/>
+    <button class="button-submit">Search</button>
+  </form>
+</div>
+
+<script>
+  document.querySelector('.search-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+  })
+</script>

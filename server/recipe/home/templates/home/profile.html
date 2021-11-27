@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-<title>Recipe App</title>
+<title>Profile Page</title>
 {% endblock title %}
 
 {% block stylesheet %} 
@@ -16,8 +16,11 @@
 {% block content %}
 
   <section id="container">
-    {% include 'home/snippets/search.html' %}
-    {% include 'snippets/recipeList.html' %}
+    {% if request.user.is_authenticated %}
+      <h4>{{request.user.username}}</h4>
+    {% else %}
+      <h4>Anonymous User</h4>
+    {% endif %}
   </section>
   {% include 'snippets/message.html' with messages=messages %}
 
