@@ -67,3 +67,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     def save(self, *args, **kwargs):
         self.username = self.email.split('@')[0]
         super(User, self).save(*args, **kwargs)
+
+    @property
+    def get_fullname(self):
+        self.last_name = self.last_name if self.last_name else ''
+        return f'{self.first_name} {self.last_name}'

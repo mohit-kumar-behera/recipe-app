@@ -1,0 +1,46 @@
+{% load static %}
+<div class="recipe-detail-container">
+  <div class="recipe-header">
+    <h1 class="recipe-title">Cheese pasta with lorem ipsum sat domen lorem ipsum</h1>
+    <small class="recipe-author">- Sanjeev Kapoor</small>
+  </div>
+  
+  
+  <div class="recipe-description">
+    <p>
+      We love a warm, cheesy casserole, especially when it's got vitamin
+      A-rich spinach. Four cheeses make this one extra
+      special. We love a warm, cheesy casserole, especially when it's got vitamin
+      A-rich spinach. Four cheeses make this one extra
+      special.We love a warm, cheesy casserole, especially when it's got vitamin
+      A-rich spinach. Four cheeses make this one extra
+      special.
+    </p>
+  </div>
+  
+  <div class="recipe-thumbnail-img">
+    <img src="{% static 'media/recipe.jpg' %}" alt="pasta"/>
+  </div>
+  
+  <div class="recipe-ingredients">
+    <h3>Ingredients</h3>
+    <ol class="ingredients-list">
+      <li class="ingredients-item">3 cups mostaccioli pasta, uncooked</li>
+    <li class="ingredients-item">1 (10 ounce) package frozen chopped spinach</li>
+    <li class="ingredients-item">4 ounces PHILADELPHIA Cream Cheese, cubed</li>
+    <li class="ingredients-item">
+      1 cup BREAKSTONE'S or KNUDSEN 2% Milkfat Low Fat Cottage Cheese
+    </li>
+    <li class="ingredients-item">2 eggs</li>
+    <li class="ingredients-item">
+      1 (8 ounce) package KRAFT Shredded Low-Moisture Part-Skim Mozzarella
+      Cheese
+    </li>
+    <li class="ingredients-item">¼ cup KRAFT Grated Parmesan Cheese</li>
+    </ol>
+  </div>
+</div>
+
+<script>
+  document.querySelector('.recipe-thumbnail-img').addEventListener('click', e => e.target.classList.toggle('active'))
+</script>

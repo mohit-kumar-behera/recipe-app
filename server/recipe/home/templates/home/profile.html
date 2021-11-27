@@ -1,27 +1,22 @@
-{% extends 'base.html' %}
-{% load static %}
-
+{% extends 'base.html' %} {% load static %} 
 {% block title %}
 <title>Profile Page</title>
-{% endblock title %}
+{% endblock title %} 
 
-{% block stylesheet %} 
-<link rel="stylesheet" href="{% static 'css/index.css' %}?{% now 'U' %}"/>
-{% endblock stylesheet %}
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}?{% now 'U' %}" />
+{% endblock stylesheet %} 
 
 {% block scriptfile %}
 <script defer src="{% static 'js/script.js' %}?{% now 'U' %}"></script>
-{% endblock scriptfile %}
+{% endblock scriptfile %} 
 
 {% block content %}
-
-  <section id="container">
-    {% if request.user.is_authenticated %}
-      <h4>{{request.user.username}}</h4>
-    {% else %}
-      <h4>Anonymous User</h4>
-    {% endif %}
-  </section>
-  {% include 'snippets/message.html' with messages=messages %}
-
-{% endblock content %}
+<section id="container">
+  {% include 'home/snippets/profile-display.html' %}
+  <div class="div-title">
+    <h1>YOUR RECIPES</h1>
+  </div>
+  {% include 'snippets/recipeList.html' %}
+</section>
+{% include 'snippets/message.html' with messages=messages %} {% endblock content %}
