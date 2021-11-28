@@ -1,0 +1,20 @@
+{% load static %}
+<div class="profile-display-container">
+  <div class="professional-card">
+    <div class="professional-card-detail">
+      <div class="professional-card-img">
+        <img src="{% static 'media/chef-pf.jpg' %}"/>
+      </div>
+      <div class="professional-card-content">
+        <ul class="card-content-list">
+          <li><b>Username:</b> {{ request.user.username }}</li>
+          <li><b>Name:</b> {{ request.user.get_fullname }}</li>
+          <li><b>Email:</b> {{ request.user.email }}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="professional-card-action">
+      <button class="card-btn">ADD RECIPE</button>
+    </div>
+  </div>
+</div>

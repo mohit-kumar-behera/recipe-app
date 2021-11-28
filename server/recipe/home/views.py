@@ -10,3 +10,7 @@ def home_view(request):
 @login_required(login_url='/')
 def profile_view(request, username):
   return render(request, 'home/profile.html')
+
+
+def recipe_detail_view(request, slug):
+  return render(request, 'home/recipe.html')
