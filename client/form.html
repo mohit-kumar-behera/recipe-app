@@ -1,0 +1,106 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="form.css" />
+    <title>Form</title>
+
+  </head>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+
+  <script>
+    $(document).ready(function(){
+      var max_fields = 20;
+      var wrapper = $(".recipeIngredient");
+      var add_button =$(".add-btn");
+
+      var x =1;
+
+      $(add_button).click(function(e){
+        e.preventDefault();
+        if(x<max_fields){
+          $(wrapper).append('<div><input class="extra-ingredient-input" type="text" placeholder="Enter ingredient" /><button class="remove-btn">x</button></div>');
+          x++;
+        }
+      });
+    
+
+      $(wrapper).on("click",".remove-btn",function(e){
+        e.preventDefault();
+        $(this).parent('div').remove();
+        x--;
+      });
+
+    });
+  </script>
+  <body>
+    <script type="text/html" id="addChild">
+      <div class="ingredient">
+
+      </div>
+    </script>
+    <form>
+      <div class="form-content">
+
+        <div class="recipeImg">
+          <div class="image-preview">
+            <img src="" alt="">
+          </div>
+          <input id="default-btn" type="file" accept="image/jpeg, image/png, image/jpg" hidden>
+          <button onclick="defaultBtnActive()" id="upload-btn" type="button" >Upload Image</button>
+        </div>
+
+        <div class="recipeTitle">
+          <label class="title">Title</label>
+          <input class="title-input" type="text" placeholder="Recipe Name" />
+        </div>
+  
+        <div class="recipeDes">
+          <label class="des">Description</label>
+          <input class="des-input" type="text" placeholder="About you recipe" />
+        </div>
+        
+
+        <div class="recipeIngredient"> 
+          <label>Ingredients</label>
+          <input class="ingredient-input" type="text" placeholder="Enter ingredient" />
+          <button class="add-btn">+</button>
+        </div>
+
+        <div class="Submit">
+          <button class="submit-btn">Submit</button>
+        </div>
+
+  
+      </div>
+      
+    </form>
+
+    <script>
+      const defaultBtn = document.querySelector("#default-btn");
+      const uploadBtn = document.querySelector("#upload-btn");
+      const img = document.querySelector('img');
+      function defaultBtnActive(){
+        console.log("uploadBtn is clicked");
+        defaultBtn.click();
+    
+      }
+
+      defaultBtn.addEventListener('change',function(){
+        const file = this.files[0];
+        if(file){
+          const reader = new FileReader();
+          reader.onload = function(){
+            const result = reader.result;
+            img.src = result;
+          }
+          reader.readAsDataURL(file);
+        } 
+      });
+    </script>
+  </body>
+</html>
