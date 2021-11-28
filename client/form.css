@@ -1,0 +1,115 @@
+form {
+  margin-left: 100px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  width: 60%;
+  height: fit-content;
+  margin-top: 100px;
+  border-top: 2px solid #000;
+  padding: 50px;
+}
+
+.form-content {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  /* align-items: center; */
+}
+
+img {
+  width: 375px;
+  height: 211px;
+  border: 2px solid black;
+  background-position: center;
+  background-size: cover;
+}
+.recipeImg {
+  margin-left: 100px;
+  margin-bottom: 20px;
+}
+#upload-btn {
+  padding: 10px 20px;
+  background-color: blue;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+input {
+  padding: 10px;
+}
+
+.recipeTitle {
+  margin: 10px;
+}
+
+.recipeDes {
+  margin: 10px;
+}
+
+.recipeIngredient {
+  margin: 10px;
+}
+.title-input {
+  margin-left: 50px;
+}
+
+.des-input {
+  margin-left: 5px;
+}
+
+.ingredient-input {
+  margin-left: 8px;
+}
+
+.add-btn {
+  font-size: 20px;
+  font-weight: 100;
+  margin-left: 10px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.extra-ingredient-input {
+  margin-top: 10px;
+  margin-left: 85px;
+}
+
+.remove-btn {
+  font-size: 15px;
+  font-weight: 100;
+  margin-left: 10px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.submit {
+  margin-top: 50px;
+  margin-left: 100px;
+}
+
+.submit-btn {
+  padding: 10px 20px;
+  background-color: transparent;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 5px;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  padding: 10px 20px;
+  background-color: blue;
+  border: none;
+  border-radius: 5px;
+  color: white;
+}
