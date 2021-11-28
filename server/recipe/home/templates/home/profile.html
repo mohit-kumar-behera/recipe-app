@@ -1,21 +1,18 @@
-{% extends 'base.html' %} {% load static %} 
-{% block title %}
+{% extends 'base.html' %} {% load static %} {% block title %}
 <title>Profile Page</title>
-{% endblock title %} 
-
-{% block stylesheet %}
+{% endblock title %} {% block stylesheet %}
 <link rel="stylesheet" href="{% static 'css/index.css' %}?{% now 'U' %}" />
-{% endblock stylesheet %} 
-
-{% block scriptfile %}
+{% endblock stylesheet %} {% block scriptfile %}
 <script defer src="{% static 'js/script.js' %}?{% now 'U' %}"></script>
-{% endblock scriptfile %} 
-
-{% block content %}
+{% endblock scriptfile %} {% block content %}
 <section id="container">
   {% include 'home/snippets/profile-display.html' %}
   <div class="div-title">
+    {% if is_other_user %}
+    <h1>{{ username }} RECIPES</h1>
+    {% else %}
     <h1>YOUR RECIPES</h1>
+    {% endif %}
   </div>
   {% include 'snippets/recipeList.html' %}
 </section>

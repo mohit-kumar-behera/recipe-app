@@ -169,7 +169,7 @@ label {
 
 /* MESSAGES */
 .messages {
-  position: absolute;
+  position: fixed;
   top: 4.5em;
   left: 50%;
   transform: translateX(-50%);

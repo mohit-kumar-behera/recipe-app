@@ -3,18 +3,22 @@
   <div class="professional-card">
     <div class="professional-card-detail">
       <div class="professional-card-img">
-        <img src="{% static 'media/chef-pf.jpg' %}"/>
+        <img src="{% static 'media/chef-pf.jpg' %}" />
       </div>
       <div class="professional-card-content">
         <ul class="card-content-list">
-          <li><b>Username:</b> {{ request.user.username }}</li>
-          <li><b>Name:</b> {{ request.user.get_fullname }}</li>
-          <li><b>Email:</b> {{ request.user.email }}</li>
+          {% if not is_other_user %}
+            {% include 'home/snippets/list-detail.html' with user=request.user %}
+          {% else %}
+            {% include 'home/snippets/list-detail.html' with user=other_user %}
+          {% endif %}
         </ul>
       </div>
     </div>
+    {% if not is_other_user %}
     <div class="professional-card-action">
       <button class="card-btn">ADD RECIPE</button>
     </div>
+    {% endif %}
   </div>
 </div>
