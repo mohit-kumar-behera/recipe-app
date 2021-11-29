@@ -138,9 +138,6 @@ ul {
   font-size: 1.27em;
 }
 
-label {
-  background-color: red;
-}
 .user-input {
   width: 100%;
   padding: 0.8em 0.55em;
@@ -170,12 +167,20 @@ label {
 /* MESSAGES */
 .messages {
   position: fixed;
-  top: 4.5em;
+  top: 0;
+  opacity: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 80%;
   padding: 0;
   display: none;
+  animation: moveDown 0.4s ease-in forwards;
+}
+@keyframes moveDown {
+  to {
+    top: 4.5em;
+    opacity: 1;
+  }
 }
 .messages.show {
   display: block;
@@ -335,14 +340,16 @@ label {
 .stretched-link:before {
   content: '';
 }
-.card-btn {
+.card-btn-link {
+  padding: 0.5em 1em;
   font-size: 1.1em;
   border-radius: 4px;
   width: 65%;
+  margin: auto;
   background: rebeccapurple;
   color: #fff;
 }
-.card-btn:hover {
+.card-btn-link:hover {
   background: rgb(159, 90, 228);
 }
 .professional-card {
@@ -410,7 +417,8 @@ label {
 }
 
 /* RECIPE DISPLAY */
-.recipe-detail-container {
+.recipe-detail-container,
+.form-container {
   width: 50%;
   margin: auto;
   border: 0.7px solid #aaaaaa70;
@@ -467,6 +475,101 @@ label {
   margin-bottom: 1em;
 }
 
+/* RECIPE FORM */
+.form-content > *:not(:last-child) {
+  margin-bottom: 1.4em;
+}
+label {
+  font-weight: bold;
+}
+.user-input {
+  margin-top: 0.6em;
+}
+.recipeImg {
+  display: flex;
+  flex-direction: column;
+}
+.image-preview {
+  background: #aaaaaa70;
+}
+.file-upload-img {
+  width: 100%;
+  height: 300px;
+  border: 2px solid #aaaaaa70;
+  border-radius: 4px;
+  display: none;
+  object-fit: cover;
+}
+.file-upload-img.active {
+  object-fit: contain;
+}
+#upload-btn {
+  width: 100%;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.05em;
+  color: white;
+  margin-top: 20px;
+  cursor: pointer;
+}
+.add-btn {
+  position: relative;
+  left: 100%;
+  transform: translateX(-100%);
+  margin: auto;
+  width: 50%;
+  font-size: 1.02em;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#upload-btn,
+.add-btn,
+.remove-btn {
+  color: grey;
+  background: #aaaaaa40;
+}
+#upload-btn:hover,
+.add-btn:hover,
+.remove-btn:hover {
+  background: #aaaaaa75;
+}
+.extra-ingredient-div {
+  display: grid;
+  grid-template-columns: 10fr 1fr;
+  grid-column-gap: 0.4em;
+}
+.remove-btn {
+  font-size: 1.2em;
+  font-weight: bold;
+  width: 50px;
+  height: 50px;
+  padding-right: 1.7em;
+  position: relative;
+  top: 48%;
+  transform: translateY(-50%);
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+.submit-btn {
+  margin-top: 2em;
+  width: 50%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.05em;
+  padding: 10px 20px;
+  background-color: rebeccapurple;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  margin-bottom: 1em;
+}
+.submit-btn:hover {
+  background-color: rgb(159, 90, 228);
+}
+
 /* RESPONSIVE */
 @media screen and (min-width: 1200px) {
   .card-deck {
@@ -486,7 +589,8 @@ label {
   .card-content-list {
     transform: translateY(-50%);
   }
-  .recipe-detail-container {
+  .recipe-detail-container,
+  .form-container {
     width: 65%;
   }
 }
@@ -512,7 +616,8 @@ label {
   .professional-card-detail > div {
     margin: auto;
   }
-  .recipe-detail-container {
+  .recipe-detail-container,
+  .form-container {
     width: 85%;
   }
   .recipe-title {
@@ -542,7 +647,8 @@ label {
   .professional-card-detail > div {
     margin: auto;
   }
-  .recipe-detail-container {
+  .recipe-detail-container,
+  .form-container {
     width: 100%;
   }
   .recipe-title {

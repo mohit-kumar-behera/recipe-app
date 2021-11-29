@@ -17,7 +17,7 @@
     </div>
     {% if not is_other_user %}
     <div class="professional-card-action">
-      <button class="card-btn">ADD RECIPE</button>
+      <a href="{% url 'home:recipe_create' %}" class="card-btn-link">ADD RECIPE</a>
     </div>
     {% endif %}
   </div>

@@ -1,0 +1,99 @@
+
+<div class="form-container">
+  <h2 style="text-align: center; margin-bottom: 1.2em">Add Recipe</h2>
+  <form method="post" action="{% url 'home:recipe_submit' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-content">
+  
+      <div class="recipeTitle">
+        <label class="title">Title</label>
+        <input class="user-input" type="text" name="title" placeholder="Recipe Name" />
+      </div>
+  
+      <div class="recipeDes">
+        <label class="des">Description</label>
+        <textarea class="user-input" name="description" placeholder="About you recipe" rows=8></textarea>
+      </div>
+
+      <div class="recipeImg">
+        <label>Upload an Image</label>
+        <div class="image-preview">
+          <img class="file-upload-img">
+        </div>
+        <input id="file-upload-btn" type="file" accept="image/jpeg, image/png, image/jpg" hidden name="image">
+        <button onclick="defaultBtnActive()" id="upload-btn" type="button" >Upload</button>
+      </div>
+      
+      <div class="recipeIngredient"> 
+        <label>Ingredients</label>
+        <input class="user-input" name="ingredient" type="text" placeholder="Enter Ingredient 1" />
+        <input class="user-input" name="ingredient" type="text" placeholder="Enter Ingredient 2" />
+        <input class="user-input" name="ingredient" type="text" placeholder="Enter Ingredient 3" />
+        <input class="user-input" name="ingredient" type="text" placeholder="Enter Ingredient 4" />
+      </div>
+
+      <button class="add-btn">Add Another Ingredient</button>
+      <button type="submit" class="submit-btn">Submit</button>
+  
+    </div>  
+  </form>
+</div>
+
+<script>
+  const fileUploadBtn = document.querySelector("#file-upload-btn");
+  const uploadedImg = document.querySelector('.file-upload-img');
+  
+  function defaultBtnActive() { fileUploadBtn.click();}
+
+  if (uploadedImg) {
+    uploadedImg.addEventListener('click', e => e.target.classList.toggle('active'))
+  }
+
+  fileUploadBtn.addEventListener('change', function (ev) {
+    const file = ev.target.files[0];
+    
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function () {
+        const result = reader.result;
+        uploadedImg.style.display = 'block';
+        uploadedImg.src = result;
+      }
+      reader.readAsDataURL(file);
+    } 
+  });
+
+
+  // Add Input Field for ingredient
+  $(document).ready(function(){
+  const maxFields = 20;
+  const wrapper = $(".recipeIngredient");
+  const add_button =$(".add-btn");
+
+  let counter = 5;
+
+  $(add_button).click(function(e) {
+    e.preventDefault();
+    
+    if (counter < maxFields) {
+      $(wrapper).append(`
+      <div class="extra-ingredient-div">
+        <input class="user-input extra" type="text" placeholder="Enter ingredient ${counter}" name="ingredient"/>
+        <button class="remove-btn">&times;</button>
+      </div>`);
+      
+      counter++;
+    }
+  });
+
+
+  $(wrapper).on("click",".remove-btn",function(e){
+    e.preventDefault();
+    $(this).parent('div').remove();
+    x--;
+  });
+
+});
+
+</script>
+
