@@ -1,12 +1,18 @@
-from django.http.response import JsonResponse
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+
 from django.shortcuts import render, redirect
 from django.db import transaction
+from django.db.models import Q
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import MultipleObjectsReturned
 
+from home.serializers import RecipeSerializer, IngredientSerializer
 from home.models import Recipe, Ingredient
+from home.utils import create_response_obj
 
 User = get_user_model()
 
@@ -88,5 +94,31 @@ def recipe_submit_view(request):
   return redirect('home:recipe_create')
 
 
+@api_view(['GET'])
 def recipe_filter_handler(request):
-  return JsonResponse('hello', safe=False)
+  recipe_filter = request.GET.get('recipe', '')
+  ingredient_filter = request.GET.get('ingredients', '')
+  serializer = None
+  tag = None
+  
+  if recipe_filter:
+    tag = 'recipe'
+    recipe_query = Recipe.objects.filter(
+      Q(title__icontains=recipe_filter) | 
+      Q(description__icontains=recipe_filter)
+    )
+    serializer = RecipeSerializer(recipe_query, many=True)
+
+  if ingredient_filter:
+    tag = 'ingredient'
+    ingredient_query = Ingredient.objects.filter(
+      description__icontains=ingredient_filter
+    ).distinct()
+    serializer = IngredientSerializer(ingredient_query, many=True)
+
+  if serializer:
+    response_obj = create_response_obj('success', tag, serializer.data)
+    return Response(response_obj, status=status.HTTP_200_OK)
+
+  response_obj = create_response_obj('fail', None, None)
+  return Response(response_obj, status=status.HTTP_404_NOT_FOUND)

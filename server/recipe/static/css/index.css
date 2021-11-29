@@ -276,9 +276,9 @@ ul {
 .card.skeleton {
   width: 300px;
   margin: auto;
-  animation: example 0.7s ease-in-out infinite alternate;
+  animation: example 0.25s ease-in-out infinite alternate;
   opacity: 0.25;
-  transform: scale(0.7);
+  transform: scale(0.75);
 }
 @keyframes example {
   to {

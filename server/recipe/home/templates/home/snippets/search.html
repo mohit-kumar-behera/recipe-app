@@ -5,23 +5,3 @@
     <button class="button-submit" style="margin-top: 0.65em">Search</button>
   </form>
 </div>
-
-<script>
-  document.querySelector('.search-form').addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    // Get input values
-    const formArr = [...new FormData(e.target)];
-    const {recipe, ingredients} = Object.fromEntries(formArr);
-
-    // Build URL
-    const url = new URL('http://localhost:8000/api/recipe/filter');
-    url.searchParams.append('recipe', recipe);
-    url.searchParams.append('ingredients', ingredients);
-    
-    // Fetch Data
-    fetch(url.href)
-      .then(res => console.log(res))
-
-  })
-</script>

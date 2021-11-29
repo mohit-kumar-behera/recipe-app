@@ -19,6 +19,135 @@
     {% include 'home/snippets/search.html' %}
     {% include 'snippets/recipeList.html' with tag='home' recipes=recipes %}
   </section>
+  
   {% include 'snippets/message.html' with messages=messages %}
+ 
+  <script>
+
+    const recipeContainer = document.querySelector('.recipe-list-container');
+    const searchForm = document.querySelector('.search-form');
+
+    const fetchData = async url => {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) throw Error('Sorry. Something went wrong while fetching related recipes');
+        
+        const data = await response.json();
+        return data;
+      } catch (err) {
+        throw err;
+      }
+    }
+
+    const renderDOM = (element, content) => {
+      // Clear Element
+      element.innerHTML = '';
+      element.insertAdjacentHTML('afterbegin', content)
+    }
+
+    const renderLoadingAnimation = elem => {
+      renderDOM(elem, `
+      <div class="card skeleton">
+        <div class="card-img"></div>
+        <div class="card-content">
+          <div class="card-content__text"></div>
+          <div class="card-content__text"></div>
+        </div>
+      </div>
+      `)
+    }
+    
+    const buildRecipeCard = recipe => {
+      return `
+      <div class="card">
+        <div class="card-img">
+          <img src="${recipe.image}" alt="${recipe.title}"/>
+        </div>
+        <div class="card-content">
+          <p class="card-content__text">${recipe.title}</p>
+          <small class="card-content__extra">${recipe.author.first_name} ${recipe.author.last_name}</small>
+        </div>
+        <a href="/recipe/${recipe.slug}" class="stretched-link"></a>
+      </div>
+      `;
+    }
+
+    const generateMarkup = recipes => {
+      return `
+      <div class="card-deck">
+        ${recipes.map(recipe => buildRecipeCard(recipe)).join('')}
+      </div>
+      `;
+    }
+
+    const handleReceivedData = responseData => {
+      let markup = '';
+      if (responseData.tag === 'recipe') {
+        const {data: recipes} = responseData;
+
+        if (recipes.length)
+          markup = generateMarkup(recipes);
+        else
+          markup = '<h2>Sorry. No recipes found related to this search. Search something different.</h2>';
+      } else if (responseData.tag === 'ingredient') {
+        const {data: ingredients} = responseData;
+        const recipes = [];
+        
+        // Loop over filtered ingredients and find unique recipes for that
+        ingredients.forEach(ingredient => {
+          const {recipe: ingredient_from_recipe} = ingredient;
+          const foundIdx = recipes.findIndex(recipe => recipe.id === ingredient_from_recipe.id)
+
+          if (foundIdx === -1)
+            recipes.push(ingredient_from_recipe);
+        });
+        
+        if (recipes.length)
+          markup = generateMarkup(recipes);
+        else
+          markup = '<h2>Sorry. No recipes found related to this search. Search something different.</h2>';
+      }
+
+      setTimeout(function () {
+        renderDOM(recipeContainer, markup)
+      }, 700);
+    }
+
+    const performFetchAndDisplay = async url => {     
+      // Loading Animation
+      renderLoadingAnimation(recipeContainer)
+
+      // Fetch Data
+      try {
+        const responseData = await fetchData(url);
+        handleReceivedData(responseData)
+      } catch (err) {
+        recipeContainer.insertAdjacentHTML('afterbegin', `<h3>${err}</h3>`)
+      }
+  
+    }
+  
+    searchForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+  
+      // Get input values
+      const formArr = [...new FormData(e.target)];
+      const {recipe, ingredients} = Object.fromEntries(formArr);
+  
+      // Build URL
+      const url = new URL('http://localhost:8000/api/recipe/filter');
+  
+      if (recipe)
+        url.searchParams.append('recipe', recipe);
+      else if (ingredients)
+        url.searchParams.append('ingredients', ingredients);
+      else 
+        alert("Fields are empty")
+      
+      // Fetch and Display Data
+      if (recipe || ingredients) 
+        performFetchAndDisplay(url.href);
+    });
+  </script>
 
 {% endblock content %}
