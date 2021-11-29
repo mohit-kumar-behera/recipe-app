@@ -60,6 +60,11 @@ ul {
   font-size: 1.25em;
 }
 
+.navbar .logo {
+  border-radius: 4px;
+  margin-right: 0.4em;
+}
+
 .navbar > div {
   grid-template-columns: repeat(2, 1fr);
 }
@@ -68,6 +73,11 @@ ul {
   justify-self: start;
   color: #fff;
   font-size: 1.15em;
+  filter: brightness(100%);
+  transition: all 0.2s ease;
+}
+.navtext:hover {
+  filter: brightness(80%);
 }
 
 .navlink {
