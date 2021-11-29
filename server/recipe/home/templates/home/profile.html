@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% load static %} {% block title %}
-<title>Profile Page</title>
+<title>Recipe App | {{ user.username }}</title>
 {% endblock title %} {% block stylesheet %}
 <link rel="stylesheet" href="{% static 'css/index.css' %}?{% now 'U' %}" />
 {% endblock stylesheet %} {% block scriptfile %}
@@ -14,6 +14,6 @@
     <h1>YOUR RECIPES</h1>
     {% endif %}
   </div>
-  {% include 'snippets/recipeList.html' %}
+  {% include 'snippets/recipeList.html' with recipes=recipes %}
 </section>
 {% include 'snippets/message.html' with messages=messages %} {% endblock content %}

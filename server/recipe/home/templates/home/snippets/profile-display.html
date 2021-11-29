@@ -7,11 +7,9 @@
       </div>
       <div class="professional-card-content">
         <ul class="card-content-list">
-          {% if not is_other_user %}
-            {% include 'home/snippets/list-detail.html' with user=request.user %}
-          {% else %}
-            {% include 'home/snippets/list-detail.html' with user=other_user %}
-          {% endif %}
+          <li><b>Username:</b> {{ user.username }}</li>
+          <li><b>Name:</b> {{ user.get_fullname }}</li>
+          <li><b>Email:</b> {{ user.email }}</li>
         </ul>
       </div>
     </div>

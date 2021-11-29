@@ -17,7 +17,7 @@
 
   <section id="container">
     {% include 'home/snippets/search.html' %}
-    {% include 'snippets/recipeList.html' %}
+    {% include 'snippets/recipeList.html' with tag='home' recipes=recipes %}
   </section>
   {% include 'snippets/message.html' with messages=messages %}
 

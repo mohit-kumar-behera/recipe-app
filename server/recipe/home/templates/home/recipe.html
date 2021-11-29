@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-<title>Recipe App</title>
+<title>Recipe App | {{ recipe.title }}</title>
 {% endblock title %}
 
 {% block stylesheet %} 
@@ -16,7 +16,14 @@
 {% block content %}
 
   <section id="container">
-    {% include 'home/snippets/recipe-detail.html' %}
+    {% if recipe %}
+      {% include 'home/snippets/recipe-detail.html' with recipe=recipe%}
+    {% else %}
+      <div class="error-div">
+        <h2>The Recipe you are looking for is not found. Please search for existing recipes.</h2>
+        <a href="{% url 'home:home' %}">Take Me Home</a>
+      </div>
+    {% endif %}
   </section>
 
   {% include 'snippets/message.html' with messages=messages %}

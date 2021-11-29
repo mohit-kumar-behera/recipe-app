@@ -220,6 +220,26 @@ ul {
   background-color: #17a2b8;
 }
 
+/* ERROR */
+.error-div {
+  text-align: center;
+}
+.error-div > *:not(:last-child) {
+  margin-bottom: 2em;
+}
+.error-div > a {
+  width: 45%;
+  margin: auto;
+  font-size: 1.1em;
+  padding: 1em;
+  border: 1px solid lightgrey;
+  border-radius: 4px;
+  color: grey;
+}
+.error-div > a:hover {
+  background-color: #aaaaaa20;
+}
+
 /* HOME */
 #container {
   padding: 0.5em;

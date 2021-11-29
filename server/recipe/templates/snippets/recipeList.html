@@ -9,93 +9,26 @@
   </div> -->
 
 
+  {% if recipes %}
   <div class="card-deck">
-    <div class="card">
-      <div class="card-img">
-        <img src="{% static 'media/recipe.jpg' %}" alt="img of recipe"/>
+    {% for recipe in recipes %}
+      <div class="card">
+        <div class="card-img">
+          <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}"/>
+        </div>
+        <div class="card-content">
+          <p class="card-content__text">{{ recipe.title }}</p>
+          <small class="card-content__extra">{{ recipe.author.username }}</small>
+        </div>
+        <a href="{% url 'home:recipe_detail' recipe.slug %}" class="stretched-link"></a>
       </div>
-      <div class="card-content">
-        <p class="card-content__text">This is a very cool recipe of pizza.</p>
-        <small class="card-content__extra">Mohit kumar</small>
-      </div>
-      <a href="#men" class="stretched-link"></a>
-    </div>
-
-    <div class="card">
-      <div class="card-img">
-        <img src="{% static 'media/recipe2.jpg' %}" alt="img of recipe"/>
-      </div>
-      <div class="card-content">
-        <p class="card-content__text">This is a very cool recipe of pizza.</p>
-        <small class="card-content__extra">Mohit kumar</small>
-      </div>
-      <a href="#men" class="stretched-link"></a>
-    </div>
-
-    <div class="card">
-      <div class="card-img">
-        <img src="{% static 'media/recipe3.jpg' %}" alt="img of recipe"/>
-      </div>
-      <div class="card-content">
-        <p class="card-content__text">This is a very cool recipe of pizza.</p>
-        <small class="card-content__extra">Mohit kumar</small>
-      </div>
-      <a href="#men" class="stretched-link"></a>
-    </div>
-
-    <div class="card">
-      <div class="card-img">
-        <img src="{% static 'media/recipe4.jpg' %}" alt="img of recipe"/>
-      </div>
-      <div class="card-content">
-        <p class="card-content__text">This is a very cool recipe of pizza.</p>
-        <small class="card-content__extra">Mohit kumar</small>
-      </div>
-      <a href="#men" class="stretched-link"></a>
-    </div>
-
-    <div class="card">
-      <div class="card-img">
-        <img src="{% static 'media/recipe5.jpg' %}" alt="img of recipe"/>
-      </div>
-      <div class="card-content">
-        <p class="card-content__text">This is a very cool recipe of pizza.</p>
-        <small class="card-content__extra">Mohit kumar</small>
-      </div>
-      <a href="#men" class="stretched-link"></a>
-    </div>
-
-    <div class="card">
-      <div class="card-img">
-        <img src="{% static 'media/recipe6.jpg' %}" alt="img of recipe"/>
-      </div>
-      <div class="card-content">
-        <p class="card-content__text">This is a very cool recipe of pizza.</p>
-        <small class="card-content__extra">Mohit kumar</small>
-      </div>
-      <a href="#men" class="stretched-link"></a>
-    </div>
-
-    <div class="card">
-      <div class="card-img">
-        <img src="{% static 'media/recipe7.jpg' %}" alt="img of recipe"/>
-      </div>
-      <div class="card-content">
-        <p class="card-content__text">This is a very cool recipe of pizza.</p>
-        <small class="card-content__extra">Mohit kumar</small>
-      </div>
-      <a href="#men" class="stretched-link"></a>
-    </div>
-
-    <div class="card">
-      <div class="card-img">
-        <img src="{% static 'media/recipe8.jpg' %}" alt="img of recipe"/>
-      </div>
-      <div class="card-content">
-        <p class="card-content__text">This is a very cool recipe of pizza.</p>
-        <small class="card-content__extra">Mohit kumar</small>
-      </div>
-      <a href="#men" class="stretched-link"></a>
-    </div>
+    {% endfor %}
   </div>
+  {% else %}
+    {% if tag == 'home' %}
+      <h3 style="text-align: center; color: #aaa">No Recipes found. Sorry</h3>
+    {% else %}
+      <h3 style="text-align: center; color: #aaa">{{ user.get_fullname|title }} doesnot have any Recipes yet</h3>
+    {% endif %}
+  {% endif %}
 </div>
