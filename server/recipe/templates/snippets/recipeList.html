@@ -9,7 +9,7 @@
         </div>
         <div class="card-content">
           <p class="card-content__text">{{ recipe.title }}</p>
-          <p class="card-content__text">{{ recipe.description }}</p>
+          <p class="card-content__description">{{ recipe.description | truncatechars:100 }}</p>
           <small class="card-content__extra">{{ recipe.author.get_fullname }}</small>
         </div>
         <a href="{% url 'home:recipe_detail' recipe.slug %}" class="stretched-link"></a>

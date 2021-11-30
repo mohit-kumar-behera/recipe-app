@@ -1,4 +1,17 @@
 /* GENERAL CSS */
+:root {
+  --main-color: #fc393e;
+  --main-color-light: #ff5f64;
+  --light-color: #aaaaaa20;
+
+  --color-orange: #fde498;
+  --color-blue: #bde7fe;
+  --color-pink: #f5a492;
+  --color-violet: #d3b0e0;
+  --color-green: #7cd4bb;
+  --color-orange-dark: #fed698;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -54,7 +67,7 @@ ul {
 .navbar {
   width: 100%;
   padding: 0.5em 0.7em;
-  background: rebeccapurple;
+  background: var(--main-color);
   color: white;
   grid-template-columns: 2fr 1fr;
   font-size: 1.25em;
@@ -75,9 +88,13 @@ ul {
   font-size: 1.15em;
   filter: brightness(100%);
   transition: all 0.2s ease;
+  padding: 0.2em;
+  border-radius: 4px;
+  background-color: #ffffff32;
 }
 .navtext:hover {
-  filter: brightness(80%);
+  background-color: #ffffff17;
+  transform: scale(0.9);
 }
 
 .navlink {
@@ -95,7 +112,7 @@ ul {
 .footer {
   width: 100%;
   padding: 1rem;
-  background: rebeccapurple;
+  background: var(--main-color);
   color: #fff;
   font-size: 1.2em;
   text-align: center;
@@ -161,17 +178,17 @@ ul {
 }
 .user-input:focus {
   outline: none;
-  border-color: rebeccapurple;
+  border-color: var(--main-color);
 }
 
 .button-submit {
   font-size: 1.05em;
-  background-color: rebeccapurple;
+  background-color: var(--main-color);
   color: #fff;
   border-radius: 5px;
 }
 .button-submit:hover {
-  background-color: rgb(159, 90, 228);
+  background-color: var(--main-color-light);
 }
 
 /* MESSAGES */
@@ -264,7 +281,7 @@ ul {
 /* SEACRH FORM */
 .search-container {
   border-radius: 4px;
-  background-color: #aaaaaa30;
+  background-color: var(--light-color);
   padding: 0.7em 0.7em 0.15em 0.7em;
 }
 .search-form {
@@ -312,7 +329,7 @@ ul {
   cursor: pointer;
   border-radius: 4px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  transition: all 0.4s linear;
+  transition: all 0.25s linear;
 }
 .card,
 .card:hover,
@@ -322,7 +339,6 @@ ul {
 .card:hover {
   background-color: #1f1d36;
   color: #fff;
-  /* transition-delay: 0.1s; */
 }
 .card-img,
 .card-content {
@@ -350,6 +366,10 @@ ul {
 }
 .card-content__text {
   font-size: 1.1em;
+  font-weight: bold;
+}
+.card-content__description {
+  line-height: 1.5;
 }
 .card-content__extra {
   font-style: italic;
@@ -376,11 +396,11 @@ ul {
   border-radius: 4px;
   width: 65%;
   margin: auto;
-  background: rebeccapurple;
+  background: var(--main-color);
   color: #fff;
 }
 .card-btn-link:hover {
-  background: rgb(159, 90, 228);
+  background: var(--main-color-light);
 }
 .professional-card {
   display: flex;
@@ -433,7 +453,7 @@ ul {
 /* PROFILE DISPLAY */
 .profile-display-container {
   padding: 1rem;
-  background-color: #aaaaaa30;
+  background-color: var(--light-color);
   border-radius: 4px;
   width: 50%;
   margin: auto;
@@ -590,14 +610,14 @@ label {
   transform: translateX(-50%);
   font-size: 1.05em;
   padding: 10px 20px;
-  background-color: rebeccapurple;
+  background-color: var(--main-color);
   border-radius: 4px;
   color: #fff;
   cursor: pointer;
   margin-bottom: 1em;
 }
 .submit-btn:hover {
-  background-color: rgb(159, 90, 228);
+  background-color: var(--main-color-light);
 }
 
 /* RESPONSIVE */
