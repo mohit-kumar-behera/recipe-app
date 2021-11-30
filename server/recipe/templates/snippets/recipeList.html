@@ -9,7 +9,8 @@
         </div>
         <div class="card-content">
           <p class="card-content__text">{{ recipe.title }}</p>
-          <small class="card-content__extra">{{ recipe.author.username }}</small>
+          <p class="card-content__text">{{ recipe.description }}</p>
+          <small class="card-content__extra">{{ recipe.author.get_fullname }}</small>
         </div>
         <a href="{% url 'home:recipe_detail' recipe.slug %}" class="stretched-link"></a>
       </div>
